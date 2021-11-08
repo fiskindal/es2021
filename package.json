@@ -1,0 +1,22 @@
+{
+  "name": "es2021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/example.remm.js",
+  "scripts": {
+    "build": "babel src -d lib",
+    "start": "babel-watch src/example.remm.js",
+    "test": "npm run build && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0"
+  },
+  "dependencies": {
+    "babel-watch": "^7.6.0"
+  }
+}
