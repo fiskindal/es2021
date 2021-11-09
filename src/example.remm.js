@@ -1,7 +1,11 @@
 //company variable is  taking a object
-const company = {peoples: 75, state: null};
+const company = {peoples: 75, state: null, active: null };
+console.log(company.active);
+company.active ||= false;
+console.log(company.active);
 
-
+company.active ||=true;
+console.log(company.active);
 
 company.peoples ||= 200;
 console.log(company.peoples);
@@ -21,49 +25,53 @@ console.log("company2.state  " + company2.state);
 //Logical AND assignment (&&=) 
 let x = false;
 let y = true;
-
+let z = false;
+let q = null;
 
 console.log(x &&= false);
 console.log(x &&= true);
 console.log(y &&= true);
 console.log(y &&= false);
 
-let ab = "text";
-let ba =  null;
+x = (x &&= y);
+console.log(" x " + x);
+y =  (y &&= q);
+console.log(" y " + y);
 
-console.log(ab ?? ba);
+q = (q &&= z);
+console.log(" q " + q);
 
 
 //Logical nullish assignment (??=)
-function config(options) {
-  options.peoples ??= 100;
-  options.state ??= '';
-  return options;
-}
-console.log(config({ peoples: 125}));
-console.log(config({}));
-console.log(config(company));
+
+// preliminary information
+let ab = "text";
+let ba =  null;
+
+console.log(" ab ?? ba " + ab ?? ba);
+console.log(" ab ?? false "+ab ?? false);
 
 
+var nullishvar1 = true;
+var nullishvar2 = false;
+var nullishvar3 = null;
+
+console.log(" nullish example 1 " , nullishvar1 ??= nullishvar2);
+console.log(" nullish example 2 " ,nullishvar3 ??= nullishvar1);
+console.log(" nullish example 3 " , nullishvar2 ??= nullishvar3);
 
 //String.prototype.replaceAll
 console.log('abbccc'.replace('b', 'd'));
 console.log('aabcc'.replace('b','d'));
 console.log('aabbcc'.replace(/b/g, '_'));
 console.log('aaaabbbbcccc'.replaceAll('b', '_'));
-console.log('abc'.replaceAll('b', '$$'));
-console.log('abc'.replaceAll('a',() => '$$' ));
+console.log('aaaabc'.replaceAll('b', '$$'));
+console.log('aaaabc'.replaceAll('a',() => '$$' ));
 
-
-const amount = 178_00; // 00 after _ for cents.
+//Numeric separators  
+const amount = 178_00; 
+console.log(typeof amount); //number
 console.log(amount.toString());
 const trillion = 1000_000_000_000n;
+console.log(typeof trillion);//bigint
 console.log(trillion.toString());
-
-
-//Promise.any()
-Promise.any([ 
-  new Promise((resolve, reject) => setTimeout(() => reject(new Error("ERROR!")), 100)),
-  new Promise((resolve, reject) => setTimeout(() => resolve(1), 200)),
-  new Promise((resolve, reject) => setTimeout(() => resolve(3), 300))
-]).then(console.log); // 1
